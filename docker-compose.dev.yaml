@@ -1,0 +1,35 @@
+services:
+  database:
+    image: postgres:${POSTGRES_VERSION:-13}-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-app}
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+    ports:
+      - 5432:5432
+
+  node:
+    user: ${DOCKER_USER_UID}:${DOCKER_USER_GID}
+    build:
+      context: ./
+      dockerfile: ./docker/dev/node.dockerfile
+      args:
+        VERSION: ${NODE_VERSION:-17.8.0}
+    environment:
+      NODE_ENV: dev
+      NODE_PORT: ${NODE_PORT}
+      DATABASE_URL: ${NODE_DATABASE_URL}
+      REDIS_URL: ${NODE_REDIS_URL}
+    working_dir: /srv
+    volumes:
+      - .:/srv:rw
+    ports:
+      - '${NODE_PORT:-8000}:80'
+    depends_on:
+      - database
+      - redis
+
+  redis:
+    image: redis:${REDIS_VERSION:-6.2.6}-alpine3.15
+    expose:
+      - 6379

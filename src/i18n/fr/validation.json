@@ -1,0 +1,13 @@
+{
+  "string": "Ce champ doit être un texte.",
+  "mail": "Vous devez fournir une addresse mail valide.",
+  "max": "Cette valeur ne doit pas excéder {max}.",
+  "min": "Cette valeur ne doit pas être inférieure à {min}.",
+  "username": {
+    "taken": "Ce nom d'utilisateur est déjà utilisé.",
+    "invalid": "Veuillez utiliser uniquement des charactères alpha-numériques, ainsi que des underscores."
+  },
+  "email": {
+    "in_use": "Cette addresse email est déjà utilisée"
+  }
+}

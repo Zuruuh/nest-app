@@ -1,0 +1,13 @@
+{
+  "string": "This field must be a string.",
+  "max": "This value cannot be greater than {max}.",
+  "min": "This value must be greater than {min}.",
+  "username": {
+    "taken": "This username is already taken.",
+    "invalid": "Please use only alphanumerics and underscores"
+  },
+  "email": {
+    "in_use": "This email address is already in use.",
+    "invalid": "You must provide a valid email address."
+  }
+}

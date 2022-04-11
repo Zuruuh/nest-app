@@ -1,0 +1,7 @@
+#!/bin/bash
+export DOCKER_USER_UID=$(id -u)
+export DOCKER_USER_GID=$(id -g)
+
+compose="docker-compose --file docker-compose.dev.yaml --env-file ./config/docker/.env.docker"
+
+eval "$compose $@"
